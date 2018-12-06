@@ -1,0 +1,88 @@
+<html><head><title>Liquid Galaxy CMS</title></head>
+<body>
+<H1>Please Select The Desired Shape </H1>
+<form action="">
+  <input type="radio" id='r1' name="gender" value="circle"> Circle<br>
+  <input type="radio" id='r2' name="gender" value="circleR"> Circle With Radius<br>
+  <input type="radio" id='r3' name="gender" value="image"> Image<br>
+  <input type="radio" id='r4' name="gender" value="Bubble"> Bubble<br>
+  <input type="radio" id='r5' name="gender" value="BubbleL"> Bubble with label<br>
+  <input type="radio" id='r6' name="gender" value="BubbleI"> Bubble with image<br>
+  <input type="radio" id='r7' name="gender" value="square"> Square<br>
+  <input type="radio" id='r8' name="gender" value="triangle"> Triangle<br>
+
+  <div id="box" style="display: none">
+Radius: <input type="text" id='radius'> 
+</div>
+  <div id="box2" style="display: none">
+Label: <input type="text" id='label'> 
+</div>
+  <input type="button" onclick="myFunction()" value="Submit">
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+function myFunction(){
+type=null
+if (document.getElementById('r1').checked) {
+	type="circle"
+  $.post('/route', {type:type})
+}
+
+if (document.getElementById('r2').checked) {
+	var radius = document.getElementById('radius').value
+	type="circler"
+  $.post('/route', {circler:radius})
+}
+
+if (document.getElementById('r3').checked) {
+	type="img"
+  $.post('/route', {type:type})
+}
+
+if (document.getElementById('r4').checked) {
+	type="bubble"
+  $.post('/route', {type:type})
+}
+
+if (document.getElementById('r5').checked) {
+	var label = document.getElementById('label').value
+  $.post('/route', {bubblel:label})
+
+}
+
+if (document.getElementById('r6').checked) {
+	type="bubblei"
+  $.post('/route', {type:type})
+}
+
+if (document.getElementById('r8').checked) {
+	type="triangle"
+  $.post('/route', {type:type})
+}
+
+if (document.getElementById('r7').checked) {
+	type="square"
+  $.post('/route', {type:type})
+}
+
+}
+</script>
+<script>
+$(function() {
+    $('input[name="gender"]').on('click', function() {
+        if ($(this).val() == 'circleR') {
+            $('#box').show();
+        }
+        else if ($(this).val() == 'BubbleL') {
+            $('#box2').show();
+        }
+		else{
+            $('#box').hide();
+            $('#box2').hide();
+
+			}
+    });
+});
+</script>
+</body>
+</html>
