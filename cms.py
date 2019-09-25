@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
 # python library for google earth plot
 #
 # author: Atsushi Sakai
